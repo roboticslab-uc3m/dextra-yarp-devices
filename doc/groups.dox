@@ -1,0 +1,49 @@
+
+/**
+@brief The main, catch-all namespace for Robotics Lab UC3M.
+ */
+namespace roboticslab
+{
+    /**
+     * @brief Contains classes related to unit testing.
+     */
+    namespace test {}
+}
+
+/**
+ * @defgroup dextra_yarp_devices_libraries Libraries
+ * @brief dextra-yarp-devices libraries.
+ */
+
+/**
+ * @ingroup dextra_yarp_devices_libraries
+ * @defgroup YarpPlugins YARP plugins
+ *
+ * @brief Contains libraries that implement YARP device interfaces
+ * and therefore can be invoked as YARP plugins.
+ */
+
+/**
+ * @defgroup dextra_yarp_devices_programs Programs
+ * @brief dextra-yarp-devices programs.
+ */
+
+/**
+ * @defgroup dextra_yarp_devices_tests Tests
+ * @brief dextra-yarp-devices tests.
+ */
+
+/**
+ * @defgroup dextra_yarp_devices_examples Examples
+ * @brief dextra-yarp-devices examples.
+ */
+
+/**
+ * @ingroup dextra_yarp_devices_examples
+ * @defgroup dextra_yarp_devices_examples_cpp C++ examples
+ */
+
+/**
+ * @ingroup dextra_yarp_devices_examples
+ * @defgroup dextra_yarp_devices_examples_py Python examples
+ */
