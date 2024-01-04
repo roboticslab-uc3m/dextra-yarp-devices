@@ -1,6 +1,8 @@
 # dextra-yarp-devices
 
-YARP devices for the [Dextra prosthetic hand](https://github.com/roboticslab-uc3m/Dextra).
+YARP devices, OpenRAVE models and configuration files for the [Dextra prosthetic hand](https://github.com/roboticslab-uc3m/Dextra).
+
+Original work: Jennifer Joana Gago Muñoz, *Desarrollo e integración de mano robótica antropomórfica en el robot humanoide TEO*, bachelor's thesis, Universidad Carlos III de Madrid, 2018.
 
 ## Installation
 
@@ -29,7 +31,9 @@ Installation instructions for installing from source can be found [here](doc/dex
 
 ## Similar and Related Projects
 
+- [roboticslab-uc3m/Dextra](https://github.com/roboticslab-uc3m/Dextra)
 - [roboticslab-uc3m/yarp-devices](https://github.com/roboticslab-uc3m/yarp-devices)
     - [issue #176](https://github.com/roboticslab-uc3m/yarp-devices/issues/176)
     - [issue #227](https://github.com/roboticslab-uc3m/yarp-devices/issues/227)
-- [roboticslab-uc3m/Dextra](https://github.com/roboticslab-uc3m/Dextra)
+- [roboticslab-uc3m/teo-openrave-models](https://github.com/roboticslab-uc3m/teo-openrave-models)
+    - [PR #24](https://github.com/roboticslab-uc3m/teo-openrave-models/pull/24)
