@@ -1,0 +1,411 @@
+<KinBody name="leftHand">
+
+	<!-- Base: FrontalLeftWrist (muñeca + palma + dorsal) -->
+
+	    <Body name="FrontalLeftWrist" type="dynamic"> 
+             <Translation>0 0 0</Translation>              
+             <Geom type="trimesh">
+              <Render>wrls/LeftStaticLinks.wrl 0.001</Render> 
+              <collision>wrls/LeftStaticLinks.wrl 0.001</collision>
+             </Geom>
+             <Mass type="custom">
+              <density>1</density>
+             </Mass>
+            </Body>
+
+	<!-- Dedo pulgar: abductor (01) -->
+
+	    <Body name="leftthumbAbductor" type="dynamic">
+            <offsetfrom>FrontalLeftWrist</offsetfrom>
+            <Translation>0.026 -0.0126 -0.112</Translation>    
+	    <RotationAxis>-1 0 0 90</RotationAxis>         
+            <Geom type="trimesh">
+            <Render>wrls/Abductor_2.wrl 0.001</Render>
+            <collision>wrls/Abductor_2.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftthumbAbductor" type="hinge">
+            <Body>FrontalLeftWrist</Body>
+            <Body>leftthumbAbductor</Body>
+            <offsetfrom>leftthumbAbductor</offsetfrom>
+	
+            <weight>1.0</weight>
+            <limitsdeg>0 -90</limitsdeg>
+	    <Anchor>0.005 0 0.01</Anchor>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo pulgar: falange proximal (01) -->
+
+	    <Body name="leftThumbProximal" type="dynamic">
+            <offsetfrom>leftthumbAbductor</offsetfrom>
+            <Translation>0.0406 0.0685 0.01775</Translation>   
+            <RotationAxis>0 0 1 90</RotationAxis>     
+            <RotationAxis>0 1 0 90</RotationAxis>       
+            <Geom type="trimesh">
+            <Render>wrls/ProximalThumb.wrl 0.001</Render>
+            <collision>wrls/ProximalThumb.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftThumbProximal" type="hinge">
+            <Body>leftthumbAbductor</Body>
+            <Body>leftThumbProximal</Body>
+            <offsetfrom>leftThumbProximal</offsetfrom>
+	
+            <weight>1.0</weight>
+            <limitsdeg>-90 90</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo pulgar (thumb): falange distal (01) -->
+
+	    <Body name="leftThumbDistal" type="dynamic">
+            <offsetfrom>leftThumbProximal</offsetfrom>
+            <Translation>0.03 0 0</Translation>	                
+            <Geom type="trimesh">
+            <Render>wrls/DistalThumb.wrl 0.001</Render>
+            <collision>wrls/DistalThumb.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftThumbDistal" type="hinge">
+            <Body>leftThumbProximal</Body>
+            <Body>leftThumbDistal</Body>
+            <offsetfrom>leftThumbDistal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis> 	<!-- sentido de giro de la joint -->
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo meñique: falange proximal (05) -->
+
+	    <Body name="leftPinkyFingerProximal" type="dynamic">
+            <offsetfrom>FrontalLeftWrist</offsetfrom>
+            <Translation>-0.0275 0.001 -0.196</Translation>
+            <RotationAxis>1 0 0 90</RotationAxis>       
+            <RotationAxis>0 1 0 90</RotationAxis>    
+            <RotationAxis>0 0 1 180</RotationAxis>   
+            <Geom type="trimesh">
+            <Render>wrls/Proximal.wrl 0.001</Render>
+            <collision>wrls/Proximal.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftPinkyFingerProximal" type="hinge">
+            <Body>FrontalLeftWrist</Body>
+            <Body>leftPinkyFingerProximal</Body>
+            <offsetfrom>leftPinkyFingerProximal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo meñique: falange media (05) -->
+
+	    <Body name="leftPinkyFingerMiddle" type="dynamic">
+            <offsetfrom>leftPinkyFingerProximal</offsetfrom>
+            <Translation>0.035 0 0</Translation>
+            <Geom type="trimesh">
+            <Render>wrls/Middle.wrl 0.001</Render>
+            <collision>wrls/Middle.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftPinkyFingerMiddle" type="hinge">
+            <Body>leftPinkyFingerProximal</Body>
+            <Body>leftPinkyFingerMiddle</Body>
+            <offsetfrom>leftPinkyFingerMiddle</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo meñique: falange distal (05) -->
+
+	    <Body name="leftPinkyFingerDistal" type="dynamic">
+            <offsetfrom>leftPinkyFingerMiddle</offsetfrom>
+            <Translation>0.025 0 0</Translation>
+            <Geom type="trimesh">
+            <Render>wrls/Distal.wrl 0.001</Render>
+            <collision>wrls/Distal.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftPinkyFingerDistal" type="hinge">
+            <Body>leftPinkyFingerMiddle</Body>
+            <Body>leftPinkyFingerDistal</Body>
+            <offsetfrom>leftPinkyFingerDistal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo anular: falange proximal (04) -->
+
+	    <Body name="leftRingFingerProximal" type="dynamic">
+            <offsetfrom>FrontalLeftWrist</offsetfrom>
+            <Translation>-0.00798 0.001 -0.211</Translation>
+            <RotationAxis>1 0 0 90</RotationAxis>       
+            <RotationAxis>0 1 0 90</RotationAxis> 
+            <RotationAxis>0 0 1 180</RotationAxis>                
+            <Geom type="trimesh">
+            <Render>wrls/Proximal.wrl 0.001</Render>
+            <collision>wrls/Proximal.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftRingFingerProximal" type="hinge">
+            <Body>FrontalLeftWrist</Body>
+            <Body>leftRingFingerProximal</Body>
+            <offsetfrom>leftRingFingerProximal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo anular: falange media (04) -->
+
+	    <Body name="leftRingFingerMiddle" type="dynamic">
+            <offsetfrom>leftRingFingerProximal</offsetfrom>
+            <Translation>0.035 0 0</Translation>
+            <Geom type="trimesh">
+            <Render>wrls/Middle.wrl 0.001</Render>
+            <collision>wrls/Middle.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftRingFingerMiddle" type="hinge">
+            <Body>leftRingFingerProximal</Body>
+            <Body>leftRingFingerMiddle</Body>
+            <offsetfrom>leftRingFingerMiddle</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo anular: falange distal (04) -->
+
+	    <Body name="leftRingFingerDistal" type="dynamic">
+            <offsetfrom>leftRingFingerMiddle</offsetfrom>
+            <Translation>0.025 0 0</Translation>
+            <Geom type="trimesh">
+            <Render>wrls/Distal.wrl 0.001</Render>
+            <collision>wrls/Distal.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftRingFingerDistal" type="hinge">
+            <Body>leftRingFingerMiddle</Body>
+            <Body>leftRingFingerDistal</Body>
+            <offsetfrom>leftRingFingerDistal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo corazón: falange proximal (03) -->
+
+	    <Body name="leftMiddleFingerProximal" type="dynamic">
+            <offsetfrom>FrontalLeftWrist</offsetfrom>
+            <Translation>0.01154 0.001 -0.221</Translation>
+            <RotationAxis>1 0 0 90</RotationAxis>       
+            <RotationAxis>0 1 0 90</RotationAxis>
+            <RotationAxis>0 0 1 180</RotationAxis>               
+            <Geom type="trimesh">
+            <Render>wrls/Proximal.wrl 0.001</Render>
+            <collision>wrls/Proximal.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftMiddleFingerProximal" type="hinge">
+            <Body>FrontalLeftWrist</Body>
+            <Body>leftMiddleFingerProximal</Body>
+            <offsetfrom>leftMiddleFingerProximal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo corazón: falange media (03) -->
+
+	    <Body name="leftMiddleFingerMiddle" type="dynamic">
+            <offsetfrom>leftMiddleFingerProximal</offsetfrom>
+            <Translation>0.035 0 0</Translation>
+            <Geom type="trimesh">
+            <Render>wrls/Middle.wrl 0.001</Render>
+            <collision>wrls/Middle.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftMiddleFingerMiddle" type="hinge">
+            <Body>leftMiddleFingerProximal</Body>
+            <Body>leftMiddleFingerMiddle</Body>
+            <offsetfrom>leftMiddleFingerMiddle</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo corazón: falange distal (03) -->
+
+	    <Body name="leftMiddleFingerDistal" type="dynamic">
+            <offsetfrom>leftMiddleFingerMiddle</offsetfrom>
+            <Translation>0.025 0 0</Translation>
+            <Geom type="trimesh">
+            <Render>wrls/Distal.wrl 0.001</Render>
+            <collision>wrls/Distal.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftMiddleFingerDistal" type="hinge">
+            <Body>leftMiddleFingerMiddle</Body>
+            <Body>leftMiddleFingerDistal</Body>
+            <offsetfrom>leftMiddleFingerDistal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo índice: falange proximal (02) -->
+
+	    <Body name="leftIndexFingerProximal" type="dynamic">
+            <offsetfrom>FrontalLeftWrist</offsetfrom>
+            <Translation>0.03106 0.001 -0.213</Translation>
+            <RotationAxis>1 0 0 90</RotationAxis>       
+            <RotationAxis>0 1 0 90</RotationAxis>  
+            <RotationAxis>0 0 1 180</RotationAxis>             
+            <Geom type="trimesh">
+            <Render>wrls/Proximal.wrl 0.001</Render>
+            <collision>wrls/Proximal.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftIndexFingerProximal" type="hinge">
+            <Body>FrontalLeftWrist</Body>
+            <Body>leftIndexFingerProximal</Body>
+            <offsetfrom>leftIndexFingerProximal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo menique: falange media (02) -->
+
+	    <Body name="leftIndexFingerMiddle" type="dynamic">
+            <offsetfrom>leftIndexFingerProximal</offsetfrom>
+            <Translation>0.035 0 0</Translation>
+            <Geom type="trimesh">
+            <Render>wrls/Middle.wrl 0.001</Render>
+            <collision>wrls/Middle.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftIndexFingerMiddle" type="hinge">
+            <Body>leftIndexFingerProximal</Body>
+            <Body>leftIndexFingerMiddle</Body>
+            <offsetfrom>leftIndexFingerMiddle</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+	<!-- Dedo índice: falange distal (02) -->
+
+	    <Body name="leftIndexFingerDistal" type="dynamic">
+            <offsetfrom>leftIndexFingerMiddle</offsetfrom>
+            <Translation>0.025 0 0</Translation>
+            <Geom type="trimesh">
+            <Render>wrls/Distal.wrl 0.001</Render>
+            <collision>wrls/Distal.wrl 0.001</collision>
+            </Geom>
+            <Mass type="custom">
+              <density>1</density>
+            </Mass>
+            </Body>
+
+	    <Joint circular="false" name="leftIndexFingerDistal" type="hinge">
+            <Body>leftIndexFingerMiddle</Body>
+            <Body>leftIndexFingerDistal</Body>
+            <offsetfrom>leftIndexFingerDistal</offsetfrom>
+            <weight>1.0</weight>
+            <limitsdeg>-7 -85</limitsdeg>
+            <axis>0 -1 0</axis>
+            <maxveldeg>10</maxveldeg>
+            <resolution>1</resolution>
+            </Joint>
+
+
+
+</KinBody>

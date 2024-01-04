@@ -1,0 +1,37 @@
+<robot name="teoSim">
+
+    <robot file="teo/teo.robot.xml"></robot>
+
+
+    <robot prefix="leftDextra/" file="dextra/leftDextra.robot.xml">
+    </robot>
+
+    <kinbody>
+        <body name="leftDextra/FrontalLeftWrist">
+                <offsetfrom>LeftArmTCP</offsetfrom>
+                <translation>0 0 0.2</translation>
+        </body>
+        <joint name="TeoToLeftDextra" type="hinge" enable="false">
+            <body>LeftArmTCP</body>
+            <body>leftDextra/FrontalLeftWrist</body>
+            <limits>0 0</limits>
+        </joint>
+    </kinbody>
+
+
+    <robot prefix="rightDextra/" file="dextra/rightDextra.robot.xml">
+    </robot>
+
+    <kinbody>
+        <body name="rightDextra/FrontalRightWrist">
+                <offsetfrom>RightArmTCP</offsetfrom>
+                <translation>0 0 0.2</translation>
+        </body>
+        <joint name="TeoToRightDextra" type="hinge" enable="false">
+            <body>RightArmTCP</body>
+            <body>rightDextra/FrontalRightWrist</body>
+            <limits>0 0</limits>
+        </joint>
+    </kinbody>
+
+</robot>
