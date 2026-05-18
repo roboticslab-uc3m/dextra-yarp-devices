@@ -8,7 +8,7 @@ using namespace roboticslab;
 
 bool DextraRawControlBoard::open(yarp::os::Searchable & config)
 {
-    axisPrefix = config.check("axisPrefix", yarp::os::Value(""), "common refix for all axis names").asString();
+    axisPrefix = config.check("axisPrefix", yarp::os::Value(""), "common prefix for all axis names").asString();
     return true;
 }
 
