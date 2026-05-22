@@ -1007,9 +1007,9 @@
       </axis>
     </joint>
 
-    <!-- <plugin name="gzyarp::ControlBoard" filename="gz-sim-yarp-controlboard-system">
+    <plugin name="gzyarp::ControlBoard" filename="gz-sim-yarp-controlboard-system">
       <yarpConfigurationFile>model://teo_dextra/conf/gazebo_teo_leftHand.ini</yarpConfigurationFile>
-    </plugin> -->
+    </plugin>
 
   </model>
 </sdf>
