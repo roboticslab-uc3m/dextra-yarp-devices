@@ -13,3 +13,6 @@ yarp_install(DIRECTORY openrave/
 
 yarp_install(DIRECTORY robots/
              DESTINATION ${TEO-CONFIGURATION-FILES_ROBOTS_INSTALL_DIR})
+
+yarp_install(DIRECTORY yarpmotorgui # no slash, install the directory itself
+             DESTINATION ${TEO-CONFIGURATION-FILES_DATA_INSTALL_DIR})
