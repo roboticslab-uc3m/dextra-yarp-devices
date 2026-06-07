@@ -11,7 +11,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/LeftStaticLinks2.dae</uri>
+            <uri>model://teo_dextra/meshes/visual/LeftStaticLinks.dae</uri>
           </mesh>
         </geometry>
         <material>
