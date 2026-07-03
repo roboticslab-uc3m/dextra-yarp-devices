@@ -123,7 +123,7 @@ public:
     virtual bool getEncoderTimed(int j, double * encs, double * time) override
     { return raw.getEncoderTimedRaw(j, encs, time); }
     virtual bool getEncodersTimed(double * encs, double * time) override
-    { return raw.getEncodersRaw(encs); }
+    { return raw.getEncodersTimedRaw(encs, time); }
 
     // ------- IPositionControl declarations -------
 
