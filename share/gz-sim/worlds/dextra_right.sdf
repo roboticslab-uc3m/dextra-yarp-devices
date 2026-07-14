@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <world name="default">
+
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun</uri>
+    </include>
+
+    <include>
+      <uri>model://dextra_right</uri>
+    </include>
+
+    <joint name="fixed_to_ground" type="fixed">
+      <parent>world</parent>
+      <child>Dextra_right::RightWrist_link</child>
+    </joint>
+
+  </world>
+</sdf>

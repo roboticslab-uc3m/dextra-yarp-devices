@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.7">
-  <model name="TEO_rightDextra">
+  <model name="Dextra_right">
 
     <link name="RightWrist_link">
       <pose>0 0 0 0 -0 0</pose>
@@ -11,7 +11,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/RightStaticLinks.dae</uri>
+            <uri>model://dextra_right/meshes/visual/RightStaticLinks.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -24,7 +24,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/LeftStaticLinks.stl</uri>
+            <uri>model://dextra_right/meshes/collision/RightStaticLinks.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -58,7 +58,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Abductor.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Abductor.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -71,7 +71,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Abductor.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Abductor.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -121,7 +121,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/ProximalThumb.dae</uri>
+            <uri>model://dextra_common/meshes/visual/ProximalThumb.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -134,7 +134,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/ProximalThumb.stl</uri>
+            <uri>model://dextra_common/meshes/collision/ProximalThumb.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -184,7 +184,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/DistalThumb.dae</uri>
+            <uri>model://dextra_common/meshes/visual/DistalThumb.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -197,7 +197,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/DistalThumb.stl</uri>
+            <uri>model://dextra_common/meshes/collision/DistalThumb.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -248,7 +248,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Proximal.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Proximal.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -261,7 +261,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Proximal.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Proximal.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -312,7 +312,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Middle.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Middle.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -325,7 +325,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Middle.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Middle.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -376,7 +376,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Distal.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Distal.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -389,7 +389,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Distal.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Distal.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -440,7 +440,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Proximal.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Proximal.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -453,7 +453,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Proximal.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Proximal.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -504,7 +504,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Middle.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Middle.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -517,7 +517,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Middle.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Middle.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -568,7 +568,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Distal.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Distal.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -581,7 +581,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Distal.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Distal.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -632,7 +632,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Proximal.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Proximal.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -645,7 +645,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Proximal.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Proximal.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -696,7 +696,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Middle.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Middle.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -709,7 +709,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Middle.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Middle.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -760,7 +760,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Distal.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Distal.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -773,7 +773,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Distal.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Distal.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -824,7 +824,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Proximal.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Proximal.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -837,7 +837,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Proximal.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Proximal.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -888,7 +888,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Middle.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Middle.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -901,7 +901,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Middle.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Middle.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -952,7 +952,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/visual/Distal.dae</uri>
+            <uri>model://dextra_common/meshes/visual/Distal.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -965,7 +965,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>model://teo_dextra/meshes/collision/Distal.stl</uri>
+            <uri>model://dextra_common/meshes/collision/Distal.stl</uri>
           </mesh>
         </geometry>
         <max_contacts>2</max_contacts>
@@ -1008,7 +1008,15 @@
     </joint>
 
     <plugin name="gzyarp::ControlBoard" filename="gz-sim-yarp-controlboard-system">
-      <yarpConfigurationFile>model://teo_dextra/conf/gazebo_teo_rightHand.ini</yarpConfigurationFile>
+      <yarpConfigurationFile>model://dextra_right/conf/gazebo_dextra_right.ini</yarpConfigurationFile>
+    </plugin>
+
+    <plugin name="gzyarp::RobotInterface" filename="gz-sim-yarp-robotinterface-system">
+      <yarpRobotInterfaceConfigurationFile>model://dextra_right/conf/dextra_right_nws_yarp.xml</yarpRobotInterfaceConfigurationFile>
+    </plugin>
+
+    <plugin name="gzyarp::RobotInterface" filename="gz-sim-yarp-robotinterface-system">
+      <yarpRobotInterfaceConfigurationFile>model://dextra_right/conf/dextra_right_nws_ros2.xml</yarpRobotInterfaceConfigurationFile>
     </plugin>
 
   </model>
