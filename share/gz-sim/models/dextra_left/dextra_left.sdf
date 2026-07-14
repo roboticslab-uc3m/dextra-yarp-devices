@@ -236,7 +236,6 @@
           <friction>0.7</friction>
         </dynamics>
       </axis>
-      <resolution>1</resolution>
     </joint>
 
     <link name="LeftPinkyProximal_link">
