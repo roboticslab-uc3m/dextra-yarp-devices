@@ -5,7 +5,7 @@
 #include <algorithm>
 
 #include <yarp/os/Log.h>
-#include <yarp/os/Time.h>
+#include <yarp/os/SystemClock.h>
 
 #include "LogComponent.hpp"
 
@@ -119,7 +119,7 @@ bool DextraRawControlBoard::getEncoderAccelerationsRaw(double * accs)
 bool DextraRawControlBoard::getEncoderTimedRaw(int j, double * enc, double * time)
 {
     CHECK_JOINT(j);
-    *time = yarp::os::Time::now();
+    *time = yarp::os::SystemClock::nowSystem();
     return getEncoderRaw(j, enc);
 }
 
@@ -127,7 +127,13 @@ bool DextraRawControlBoard::getEncoderTimedRaw(int j, double * enc, double * tim
 
 bool DextraRawControlBoard::getEncodersTimedRaw(double * encs, double * time)
 {
-    *time = yarp::os::Time::now();
+    auto now = yarp::os::SystemClock::nowSystem();
+
+    for (int j = 0; j < Synapse::DATA_POINTS; j++)
+    {
+        time[j] = now;
+    }
+
     return getEncodersRaw(encs);
 }
 
