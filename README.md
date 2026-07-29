@@ -31,7 +31,7 @@ Installation instructions for installing from source can be found [here](doc/dex
 
 ## Similar and Related Projects
 
-- [roboticslab-uc3m/Dextra](https://github.com/roboticslab-uc3m/Dextra)
+- [roboticslab-uc3m/dextra](https://github.com/roboticslab-uc3m/dextra)
 - [roboticslab-uc3m/yarp-devices](https://github.com/roboticslab-uc3m/yarp-devices)
     - [issue #176](https://github.com/roboticslab-uc3m/yarp-devices/issues/176)
     - [issue #227](https://github.com/roboticslab-uc3m/yarp-devices/issues/227)
