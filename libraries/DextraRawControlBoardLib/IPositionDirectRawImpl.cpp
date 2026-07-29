@@ -2,17 +2,12 @@
 
 #include "DextraRawControlBoard.hpp"
 
-#include <yarp/os/Log.h>
-
-#include "LogComponent.hpp"
-
 using namespace roboticslab;
 
 // ----------------------------------------------------------------------------------------
 
 bool DextraRawControlBoard::setPositionRaw(int j, double ref)
 {
-    yCTrace(DEXTRA, "%d %f", j, ref);
     return positionMoveRaw(j, ref);
 }
 
