@@ -108,7 +108,7 @@ jobs:
         sudo cmake --install .deps/yarp-devices/build
 
     - name: Configure main project
-      run: cmake -S . -B build -DALLOW_DEVICE_PARAM_PARSER_GENERATION=ON
+      run: cmake -S . -B build
 
     - name: Compile main project
       run: cmake --build build

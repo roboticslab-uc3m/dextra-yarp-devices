@@ -6,10 +6,6 @@
 
 #include <algorithm>
 
-#include <yarp/os/Log.h>
-
-#include "LogComponent.hpp"
-
 using namespace roboticslab;
 
 // -----------------------------------------------------------------------------------------
@@ -24,7 +20,6 @@ bool DextraRawControlBoard::getAxes(int *ax)
 
 bool DextraRawControlBoard::positionMoveRaw(int j, double ref)
 {
-    yCITrace(DEXTRA, id(), "%d %f", j, ref);
     CHECK_JOINT(j);
 
     Synapse::Setpoints setpoints;
@@ -44,7 +39,6 @@ bool DextraRawControlBoard::positionMoveRaw(int j, double ref)
 
 bool DextraRawControlBoard::positionMoveRaw(const double * refs)
 {
-    yCITrace(DEXTRA, id(), "");
 
     Synapse::Setpoints setpoints;
     std::copy(refs, refs + Synapse::DATA_POINTS, std::begin(setpoints));
@@ -62,7 +56,6 @@ bool DextraRawControlBoard::positionMoveRaw(const double * refs)
 
 bool DextraRawControlBoard::positionMoveRaw(int n_joint, const int * joints, const double * refs)
 {
-    yCITrace(DEXTRA, id(), "%d", n_joint);
 
     double encs[Synapse::DATA_POINTS];
 
@@ -83,7 +76,6 @@ bool DextraRawControlBoard::positionMoveRaw(int n_joint, const int * joints, con
 
 bool DextraRawControlBoard::relativeMoveRaw(int j, double delta)
 {
-    yCITrace(DEXTRA, id(), "%d %f", j, delta);
     CHECK_JOINT(j);
 
     double ref;
@@ -100,7 +92,6 @@ bool DextraRawControlBoard::relativeMoveRaw(int j, double delta)
 
 bool DextraRawControlBoard::relativeMoveRaw(const double * deltas)
 {
-    yCITrace(DEXTRA, id(), "");
 
     double encs[Synapse::DATA_POINTS];
 
@@ -121,7 +112,6 @@ bool DextraRawControlBoard::relativeMoveRaw(const double * deltas)
 
 bool DextraRawControlBoard::relativeMoveRaw(int n_joint, const int * joints, const double * deltas)
 {
-    yCITrace(DEXTRA, id(), "%d", n_joint);
 
     double encs[Synapse::DATA_POINTS];
 
@@ -142,7 +132,6 @@ bool DextraRawControlBoard::relativeMoveRaw(int n_joint, const int * joints, con
 
 bool DextraRawControlBoard::checkMotionDoneRaw(int j, bool * flag)
 {
-    yCITrace(DEXTRA, id(), "%d", j);
     CHECK_JOINT(j);
     *flag = true;
     return true;
@@ -152,7 +141,6 @@ bool DextraRawControlBoard::checkMotionDoneRaw(int j, bool * flag)
 
 bool DextraRawControlBoard::checkMotionDoneRaw(bool * flag)
 {
-    yCITrace(DEXTRA, id(), "");
 
     bool ok = true;
 
@@ -170,7 +158,6 @@ bool DextraRawControlBoard::checkMotionDoneRaw(bool * flag)
 
 bool DextraRawControlBoard::checkMotionDoneRaw(int n_joint, const int * joints, bool * flag)
 {
-    yCITrace(DEXTRA, id(), "%d", n_joint);
 
     bool ok = true;
 
@@ -188,7 +175,6 @@ bool DextraRawControlBoard::checkMotionDoneRaw(int n_joint, const int * joints, 
 
 bool DextraRawControlBoard::setRefSpeedRaw(int j, double sp)
 {
-    yCITrace(DEXTRA, id(), "%d %f", j ,sp);
     CHECK_JOINT(j);
     return false;
 }
@@ -197,7 +183,6 @@ bool DextraRawControlBoard::setRefSpeedRaw(int j, double sp)
 
 bool DextraRawControlBoard::setRefSpeedsRaw(const double * spds)
 {
-    yCITrace(DEXTRA, id(), "");
 
     bool ok = true;
 
@@ -213,7 +198,6 @@ bool DextraRawControlBoard::setRefSpeedsRaw(const double * spds)
 
 bool DextraRawControlBoard::setRefSpeedsRaw(int n_joint, const int * joints, const double * spds)
 {
-    yCITrace(DEXTRA, id(), "");
 
     bool ok = true;
 
@@ -229,7 +213,6 @@ bool DextraRawControlBoard::setRefSpeedsRaw(int n_joint, const int * joints, con
 
 bool DextraRawControlBoard::setRefAccelerationRaw(int j, double acc)
 {
-    yCITrace(DEXTRA, id(), "%d %f", j, acc);
     CHECK_JOINT(j);
     return false;
 }
@@ -238,7 +221,6 @@ bool DextraRawControlBoard::setRefAccelerationRaw(int j, double acc)
 
 bool DextraRawControlBoard::setRefAccelerationsRaw(const double * accs)
 {
-    yCITrace(DEXTRA, id(), "");
 
     bool ok = true;
 
@@ -254,7 +236,6 @@ bool DextraRawControlBoard::setRefAccelerationsRaw(const double * accs)
 
 bool DextraRawControlBoard::setRefAccelerationsRaw(int n_joint, const int * joints, const double * accs)
 {
-    yCITrace(DEXTRA, id(), "%d", n_joint);
 
     bool ok = true;
 
@@ -270,7 +251,6 @@ bool DextraRawControlBoard::setRefAccelerationsRaw(int n_joint, const int * join
 
 bool DextraRawControlBoard::getRefSpeedRaw(int j, double * ref)
 {
-    yCITrace(DEXTRA, id(), "%d", j);
     CHECK_JOINT(j);
     return false;
 }
@@ -279,7 +259,6 @@ bool DextraRawControlBoard::getRefSpeedRaw(int j, double * ref)
 
 bool DextraRawControlBoard::getRefSpeedsRaw(double * spds)
 {
-    yCITrace(DEXTRA, id(), "");
 
     bool ok = true;
 
@@ -295,7 +274,6 @@ bool DextraRawControlBoard::getRefSpeedsRaw(double * spds)
 
 bool DextraRawControlBoard::getRefSpeedsRaw(int n_joint, const int * joints, double * spds)
 {
-    yCITrace(DEXTRA, id(), "%d", n_joint);
 
     bool ok = true;
 
@@ -311,7 +289,6 @@ bool DextraRawControlBoard::getRefSpeedsRaw(int n_joint, const int * joints, dou
 
 bool DextraRawControlBoard::getRefAccelerationRaw(int j, double * acc)
 {
-    yCITrace(DEXTRA, id(), "%d", j);
     CHECK_JOINT(j);
     return false;
 }
@@ -320,7 +297,6 @@ bool DextraRawControlBoard::getRefAccelerationRaw(int j, double * acc)
 
 bool DextraRawControlBoard::getRefAccelerationsRaw(double * accs)
 {
-    yCITrace(DEXTRA, id(), "");
 
     bool ok = true;
 
@@ -336,7 +312,6 @@ bool DextraRawControlBoard::getRefAccelerationsRaw(double * accs)
 
 bool DextraRawControlBoard::getRefAccelerationsRaw(int n_joint, const int * joints, double * accs)
 {
-    yCITrace(DEXTRA, id(), "%d", n_joint);
 
     bool ok = true;
 
@@ -352,7 +327,6 @@ bool DextraRawControlBoard::getRefAccelerationsRaw(int n_joint, const int * join
 
 bool DextraRawControlBoard::stopRaw(int j)
 {
-    yCITrace(DEXTRA, id(), "%d", j);
     CHECK_JOINT(j);
     return false;
 }
@@ -361,7 +335,6 @@ bool DextraRawControlBoard::stopRaw(int j)
 
 bool DextraRawControlBoard::stopRaw()
 {
-    yCITrace(DEXTRA, id(), "");
 
     bool ok = true;
 
@@ -377,7 +350,6 @@ bool DextraRawControlBoard::stopRaw()
 
 bool DextraRawControlBoard::stopRaw(int n_joint, const int * joints)
 {
-    yCITrace(DEXTRA, id(), "%d", n_joint);
 
     bool ok = true;
 
@@ -393,7 +365,6 @@ bool DextraRawControlBoard::stopRaw(int n_joint, const int * joints)
 
 bool DextraRawControlBoard::getTargetPositionRaw(int joint, double * ref)
 {
-    yCITrace(DEXTRA, id(), "%d", joint);
     return false;
 }
 
@@ -401,7 +372,6 @@ bool DextraRawControlBoard::getTargetPositionRaw(int joint, double * ref)
 
 bool DextraRawControlBoard::getTargetPositionsRaw(double * refs)
 {
-    yCITrace(DEXTRA, id(), "");
 
     bool ok = true;
 
@@ -417,7 +387,6 @@ bool DextraRawControlBoard::getTargetPositionsRaw(double * refs)
 
 bool DextraRawControlBoard::getTargetPositionsRaw(int n_joint, const int * joints, double * refs)
 {
-    yCITrace(DEXTRA, id(), "%d", n_joint);
 
     bool ok = true;
 
