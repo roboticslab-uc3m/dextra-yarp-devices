@@ -3,6 +3,8 @@
 #ifndef __DEXTRA_SERIAL_CONTROL_BOARD_HPP__
 #define __DEXTRA_SERIAL_CONTROL_BOARD_HPP__
 
+#include <yarp/conf/version.h>
+
 #include <yarp/dev/DeviceDriver.h>
 #include <yarp/dev/IAxisInfo.h>
 #include <yarp/dev/IControlLimits.h>
@@ -59,139 +61,278 @@ class DextraSerialControlBoard : public yarp::dev::DeviceDriver,
 public:
     //  --------- DeviceDriver declarations. Implementation in DeviceDriverImpl.cpp ---------
 
-    virtual bool open(yarp::os::Searchable & config) override;
-    virtual bool close() override;
+    bool open(yarp::os::Searchable & config) override;
+    bool close() override;
 
     //  --------- IAxisInfo declarations ---------
 
-    virtual bool getAxisName(int axis, std::string & name) override
+#if YARP_VERSION_COMPARE(>=, 4, 0, 0)
+    yarp::dev::ReturnValue getAxisName(int axis, std::string & name) override
     { return raw.getAxisNameRaw(axis, name); }
-    virtual bool getJointType(int axis, yarp::dev::JointTypeEnum & type) override
+    yarp::dev::ReturnValue getJointType(int axis, yarp::dev::JointTypeEnum & type) override
     { return raw.getJointTypeRaw(axis, type); }
+#else
+    bool getAxisName(int axis, std::string & name) override
+    { return raw.getAxisNameRaw(axis, name); }
+    bool getJointType(int axis, yarp::dev::JointTypeEnum & type) override
+    { return raw.getJointTypeRaw(axis, type); }
+#endif
 
     //  --------- IControlLimits declarations ---------
 
-    virtual bool setLimits(int axis, double min, double max) override
-    { return raw.setLimitsRaw(axis, min, max); }
-    virtual bool getLimits(int axis, double * min, double * max) override
-    { return raw.getLimitsRaw(axis, min, max); }
-    virtual bool setVelLimits(int axis, double min, double max) override
+#if YARP_VERSION_COMPARE(>=, 4, 0, 0)
+    yarp::dev::ReturnValue setPosLimits(int axis, double min, double max) override
+    { return raw.setPosLimitsRaw(axis, min, max); }
+    yarp::dev::ReturnValue getPosLimits(int axis, double * min, double * max) override
+    { return raw.getPosLimitsRaw(axis, min, max); }
+    yarp::dev::ReturnValue setVelLimits(int axis, double min, double max) override
     { return raw.setVelLimitsRaw(axis, min, max); }
-    virtual bool getVelLimits(int axis, double * min, double * max) override
+    yarp::dev::ReturnValue getVelLimits(int axis, double * min, double * max) override
     { return raw.getVelLimitsRaw(axis, min, max); }
+#else
+    bool setLimits(int axis, double min, double max) override
+    { return raw.setLimitsRaw(axis, min, max); }
+    bool getLimits(int axis, double * min, double * max) override
+    { return raw.getLimitsRaw(axis, min, max); }
+    bool setVelLimits(int axis, double min, double max) override
+    { return raw.setVelLimitsRaw(axis, min, max); }
+    bool getVelLimits(int axis, double * min, double * max) override
+    { return raw.getVelLimitsRaw(axis, min, max); }
+#endif
 
     //  --------- IControlMode declarations ---------
 
-    virtual bool getControlMode(int j, int * mode) override
+#if YARP_VERSION_COMPARE(>=, 4, 0, 0)
+    yarp::dev::ReturnValue getAvailableControlModes(int j, std::vector<yarp::dev::SelectableControlModeEnum> & modes) override
+    { return raw.getAvailableControlModesRaw(j, modes); }
+    yarp::dev::ReturnValue getControlMode(int j, yarp::dev::ControlModeEnum & mode) override
     { return raw.getControlModeRaw(j, mode); }
-    virtual bool getControlModes(int * modes) override
+    yarp::dev::ReturnValue getControlModes(std::vector<yarp::dev::ControlModeEnum> & modes) override
     { return raw.getControlModesRaw(modes); }
-    virtual bool getControlModes(int n_joint, const int * joints, int * modes) override
-    { return raw.getControlModesRaw(n_joint, joints, modes); }
-    virtual bool setControlMode(int j, int mode) override
+    yarp::dev::ReturnValue getControlModes(const std::vector<int> & joints, std::vector<yarp::dev::ControlModeEnum> & modes) override
+    { return raw.getControlModesRaw(joints, modes); }
+    yarp::dev::ReturnValue setControlMode(int j, yarp::dev::SelectableControlModeEnum mode) override
     { return raw.setControlModeRaw(j, mode); }
-    virtual bool setControlModes(int * modes) override
+    yarp::dev::ReturnValue setControlModes(const std::vector<yarp::dev::SelectableControlModeEnum> & modes) override
     { return raw.setControlModesRaw(modes); }
-    virtual bool setControlModes(int n_joint, const int * joints, int * modes) override
+    yarp::dev::ReturnValue setControlModes(const std::vector<int> & joints, const std::vector<yarp::dev::SelectableControlModeEnum> & modes) override
+    { return raw.setControlModesRaw(joints, modes); }
+#else
+    bool getControlMode(int j, int * mode) override
+    { return raw.getControlModeRaw(j, mode); }
+    bool getControlModes(int * modes) override
+    { return raw.getControlModesRaw(modes); }
+    bool getControlModes(int n_joint, const int * joints, int * modes) override
+    { return raw.getControlModesRaw(n_joint, joints, modes); }
+    bool setControlMode(int j, int mode) override
+    { return raw.setControlModeRaw(j, mode); }
+    bool setControlModes(int * modes) override
+    { return raw.setControlModesRaw(modes); }
+    bool setControlModes(int n_joint, const int * joints, int * modes) override
     { return raw.setControlModesRaw(n_joint, joints, modes); }
+#endif
 
     //  ---------- IEncoders declarations ----------
 
-    virtual bool resetEncoder(int j) override
+#if YARP_VERSION_COMPARE(>=, 4, 0, 0)
+    yarp::dev::ReturnValue resetEncoder(int j) override
     { return raw.resetEncoderRaw(j); }
-    virtual bool resetEncoders() override
+    yarp::dev::ReturnValue resetEncoders() override
     { return raw.resetEncodersRaw(); }
-    virtual bool setEncoder(int j, double val) override
+    yarp::dev::ReturnValue setEncoder(int j, double val) override
     { return raw.setEncoderRaw(j, val); }
-    virtual bool setEncoders(const double *vals) override
+    yarp::dev::ReturnValue setEncoders(const double *vals) override
     { return raw.setEncodersRaw(vals); }
-    virtual bool getEncoder(int j, double * v) override
+    yarp::dev::ReturnValue getEncoder(int j, double * v) override
     { return raw.getEncoderRaw(j, v); }
-    virtual bool getEncoders(double *encs) override
+    yarp::dev::ReturnValue getEncoders(double *encs) override
     { return raw.getEncodersRaw(encs); }
-    virtual bool getEncoderSpeed(int j, double * sp) override
+    yarp::dev::ReturnValue getEncoderSpeed(int j, double * sp) override
     { return raw.getEncoderSpeedRaw(j, sp); }
-    virtual bool getEncoderSpeeds(double * spds) override
+    yarp::dev::ReturnValue getEncoderSpeeds(double * spds) override
     { return raw.getEncoderSpeedsRaw(spds); }
-    virtual bool getEncoderAcceleration(int j, double * spds) override
+    yarp::dev::ReturnValue getEncoderAcceleration(int j, double * spds) override
     { return raw.getEncoderAccelerationRaw(j, spds); }
-    virtual bool getEncoderAccelerations(double * accs) override
+    yarp::dev::ReturnValue getEncoderAccelerations(double * accs) override
     { return raw.getEncoderAccelerationsRaw(accs); }
-
-    //  ---------- IEncodersTimed declarations ----------
-
-    virtual bool getEncoderTimed(int j, double * encs, double * time) override
+    yarp::dev::ReturnValue getEncoderTimed(int j, double * encs, double * time) override
     { return raw.getEncoderTimedRaw(j, encs, time); }
-    virtual bool getEncodersTimed(double * encs, double * time) override
+    yarp::dev::ReturnValue getEncodersTimed(double * encs, double * time) override
     { return raw.getEncodersTimedRaw(encs, time); }
+#else
+    bool resetEncoder(int j) override
+    { return raw.resetEncoderRaw(j); }
+    bool resetEncoders() override
+    { return raw.resetEncodersRaw(); }
+    bool setEncoder(int j, double val) override
+    { return raw.setEncoderRaw(j, val); }
+    bool setEncoders(const double *vals) override
+    { return raw.setEncodersRaw(vals); }
+    bool getEncoder(int j, double * v) override
+    { return raw.getEncoderRaw(j, v); }
+    bool getEncoders(double *encs) override
+    { return raw.getEncodersRaw(encs); }
+    bool getEncoderSpeed(int j, double * sp) override
+    { return raw.getEncoderSpeedRaw(j, sp); }
+    bool getEncoderSpeeds(double * spds) override
+    { return raw.getEncoderSpeedsRaw(spds); }
+    bool getEncoderAcceleration(int j, double * spds) override
+    { return raw.getEncoderAccelerationRaw(j, spds); }
+    bool getEncoderAccelerations(double * accs) override
+    { return raw.getEncoderAccelerationsRaw(accs); }
+    bool getEncoderTimed(int j, double * encs, double * time) override
+    { return raw.getEncoderTimedRaw(j, encs, time); }
+    bool getEncodersTimed(double * encs, double * time) override
+    { return raw.getEncodersTimedRaw(encs, time); }
+#endif
 
     // ------- IPositionControl declarations -------
 
-    virtual bool getAxes(int * ax) override
+#if YARP_VERSION_COMPARE(>=, 4, 0, 0)
+    yarp::dev::ReturnValue getAxes(std::size_t & ax) override
     { return raw.getAxes(ax); }
-    virtual bool positionMove(int j, double ref) override
+    yarp::dev::ReturnValue positionMove(int j, double ref) override
     { return raw.positionMoveRaw(j, ref); }
-    virtual bool positionMove(const double * refs) override
+    yarp::dev::ReturnValue positionMove(const double * refs) override
     { return raw.positionMoveRaw(refs); }
-    virtual bool positionMove(int n_joint, const int * joints, const double * refs) override
+    yarp::dev::ReturnValue positionMove(int n_joint, const int * joints, const double * refs) override
     { return raw.positionMoveRaw(n_joint, joints, refs); }
-    virtual bool relativeMove(int j, double delta) override
+    yarp::dev::ReturnValue relativeMove(int j, double delta) override
     { return raw.relativeMoveRaw(j, delta); }
-    virtual bool relativeMove(const double * deltas) override
+    yarp::dev::ReturnValue relativeMove(const double * deltas) override
     { return raw.relativeMoveRaw(deltas); }
-    virtual bool relativeMove(int n_joint, const int * joints, const double * deltas) override
+    yarp::dev::ReturnValue relativeMove(int n_joint, const int * joints, const double * deltas) override
     { return raw.relativeMoveRaw(n_joint, joints, deltas); }
-    virtual bool checkMotionDone(int j, bool * flag) override
+    yarp::dev::ReturnValue checkMotionDone(int j, bool & flag) override
     { return raw.checkMotionDoneRaw(j, flag); }
-    virtual bool checkMotionDone(bool * flag) override
+    yarp::dev::ReturnValue checkMotionDone(bool & flag) override
     { return raw.checkMotionDoneRaw(flag); }
-    virtual bool checkMotionDone(int n_joint, const int * joints, bool * flag) override
-    { return raw.checkMotionDoneRaw(n_joint, joints, flag); }
-    virtual bool setRefSpeed(int j, double sp) override
-    { return raw.setRefSpeedRaw(j, sp); }
-    virtual bool setRefSpeeds(const double * spds) override
-    { return raw.setRefSpeedsRaw(spds); }
-    virtual bool setRefSpeeds(int n_joint, const int * joints, const double * spds) override
-    { return raw.setRefSpeedsRaw(n_joint, joints, spds); }
-    virtual bool setRefAcceleration(int j, double acc) override
-    { return raw.setRefAccelerationRaw(j, acc); }
-    virtual bool setRefAccelerations(const double * accs) override
-    { return raw.setRefAccelerationsRaw(accs); }
-    virtual bool setRefAccelerations(int n_joint, const int * joints, const double * accs) override
-    { return raw.setRefAccelerationsRaw(n_joint, joints, accs); }
-    virtual bool getRefSpeed(int j, double * ref) override
-    { return raw.getRefSpeedRaw(j, ref); }
-    virtual bool getRefSpeeds(double * spds) override
-    { return raw.getRefSpeedsRaw(spds); }
-    virtual bool getRefSpeeds(int n_joint, const int * joints, double * spds) override
-    { return raw.getRefSpeedsRaw(n_joint, joints, spds); }
-    virtual bool getRefAcceleration(int j, double * acc) override
-    { return raw.getRefAccelerationRaw(j, acc); }
-    virtual bool getRefAccelerations(double * accs) override
-    { return raw.getRefAccelerationsRaw(accs); }
-    virtual bool getRefAccelerations(int n_joint, const int * joints, double * accs) override
-    { return raw.getRefAccelerationsRaw(n_joint, joints, accs); }
-    virtual bool stop(int j) override
+    yarp::dev::ReturnValue checkMotionDone(const std::vector<int> & joints, bool & flag) override
+    { return raw.checkMotionDoneRaw(joints, flag); }
+    yarp::dev::ReturnValue setTrajSpeed(int j, double sp) override
+    { return raw.setTrajSpeedRaw(j, sp); }
+    yarp::dev::ReturnValue setTrajSpeeds(const double * spds) override
+    { return raw.setTrajSpeedsRaw(spds); }
+    yarp::dev::ReturnValue setTrajSpeeds(int n_joint, const int * joints, const double * spds) override
+    { return raw.setTrajSpeedsRaw(n_joint, joints, spds); }
+    yarp::dev::ReturnValue setTrajAcceleration(int j, double acc) override
+    { return raw.setTrajAccelerationRaw(j, acc); }
+    yarp::dev::ReturnValue setTrajAccelerations(const double * accs) override
+    { return raw.setTrajAccelerationsRaw(accs); }
+    yarp::dev::ReturnValue setTrajAccelerations(int n_joint, const int * joints, const double * accs) override
+    { return raw.setTrajAccelerationsRaw(n_joint, joints, accs); }
+    yarp::dev::ReturnValue getTrajSpeed(int j, double * ref) override
+    { return raw.getTrajSpeedRaw(j, ref); }
+    yarp::dev::ReturnValue getTrajSpeeds(double * spds) override
+    { return raw.getTrajSpeedsRaw(spds); }
+    yarp::dev::ReturnValue getTrajSpeeds(int n_joint, const int * joints, double * spds) override
+    { return raw.getTrajSpeedsRaw(n_joint, joints, spds); }
+    yarp::dev::ReturnValue getTrajAcceleration(int j, double * acc) override
+    { return raw.getTrajAccelerationRaw(j, acc); }
+    yarp::dev::ReturnValue getTrajAccelerations(double * accs) override
+    { return raw.getTrajAccelerationsRaw(accs); }
+    yarp::dev::ReturnValue getTrajAccelerations(int n_joint, const int * joints, double * accs) override
+    { return raw.getTrajAccelerationsRaw(n_joint, joints, accs); }
+    yarp::dev::ReturnValue stop(int j) override
     { return raw.stopRaw(j); }
-    virtual bool stop() override
+    yarp::dev::ReturnValue stop() override
     { return raw.stopRaw(); }
-    virtual bool stop(int n_joint, const int * joints) override
+    yarp::dev::ReturnValue stop(int n_joint, const int * joints) override
     { return raw.stopRaw(n_joint, joints); }
-    virtual bool getTargetPosition(int joint, double * ref) override
+    yarp::dev::ReturnValue getTargetPosition(int joint, double * ref) override
     { return raw.getTargetPositionsRaw(joint, &joint, ref); }
-    virtual bool getTargetPositions(double * refs) override
+    yarp::dev::ReturnValue getTargetPositions(double * refs) override
     { return raw.getTargetPositionsRaw(refs); }
-    virtual bool getTargetPositions(int n_joint, const int * joints, double * refs) override
+    yarp::dev::ReturnValue getTargetPositions(int n_joint, const int * joints, double * refs) override
     { return raw.getTargetPositionsRaw(n_joint, joints, refs); }
+#else
+    bool getAxes(int * ax) override
+    { return raw.getAxes(ax); }
+    bool positionMove(int j, double ref) override
+    { return raw.positionMoveRaw(j, ref); }
+    bool positionMove(const double * refs) override
+    { return raw.positionMoveRaw(refs); }
+    bool positionMove(int n_joint, const int * joints, const double * refs) override
+    { return raw.positionMoveRaw(n_joint, joints, refs); }
+    bool relativeMove(int j, double delta) override
+    { return raw.relativeMoveRaw(j, delta); }
+    bool relativeMove(const double * deltas) override
+    { return raw.relativeMoveRaw(deltas); }
+    bool relativeMove(int n_joint, const int * joints, const double * deltas) override
+    { return raw.relativeMoveRaw(n_joint, joints, deltas); }
+    bool checkMotionDone(int j, bool * flag) override
+    { return raw.checkMotionDoneRaw(j, flag); }
+    bool checkMotionDone(bool * flag) override
+    { return raw.checkMotionDoneRaw(flag); }
+    bool checkMotionDone(int n_joint, const int * joints, bool * flag) override
+    { return raw.checkMotionDoneRaw(n_joint, joints, flag); }
+    bool setRefSpeed(int j, double sp) override
+    { return raw.setRefSpeedRaw(j, sp); }
+    bool setRefSpeeds(const double * spds) override
+    { return raw.setRefSpeedsRaw(spds); }
+    bool setRefSpeeds(int n_joint, const int * joints, const double * spds) override
+    { return raw.setRefSpeedsRaw(n_joint, joints, spds); }
+    bool setRefAcceleration(int j, double acc) override
+    { return raw.setRefAccelerationRaw(j, acc); }
+    bool setRefAccelerations(const double * accs) override
+    { return raw.setRefAccelerationsRaw(accs); }
+    bool setRefAccelerations(int n_joint, const int * joints, const double * accs) override
+    { return raw.setRefAccelerationsRaw(n_joint, joints, accs); }
+    bool getRefSpeed(int j, double * ref) override
+    { return raw.getRefSpeedRaw(j, ref); }
+    bool getRefSpeeds(double * spds) override
+    { return raw.getRefSpeedsRaw(spds); }
+    bool getRefSpeeds(int n_joint, const int * joints, double * spds) override
+    { return raw.getRefSpeedsRaw(n_joint, joints, spds); }
+    bool getRefAcceleration(int j, double * acc) override
+    { return raw.getRefAccelerationRaw(j, acc); }
+    bool getRefAccelerations(double * accs) override
+    { return raw.getRefAccelerationsRaw(accs); }
+    bool getRefAccelerations(int n_joint, const int * joints, double * accs) override
+    { return raw.getRefAccelerationsRaw(n_joint, joints, accs); }
+    bool stop(int j) override
+    { return raw.stopRaw(j); }
+    bool stop() override
+    { return raw.stopRaw(); }
+    bool stop(int n_joint, const int * joints) override
+    { return raw.stopRaw(n_joint, joints); }
+    bool getTargetPosition(int joint, double * ref) override
+    { return raw.getTargetPositionsRaw(joint, &joint, ref); }
+    bool getTargetPositions(double * refs) override
+    { return raw.getTargetPositionsRaw(refs); }
+    bool getTargetPositions(int n_joint, const int * joints, double * refs) override
+    { return raw.getTargetPositionsRaw(n_joint, joints, refs); }
+#endif
 
     // ------- IPositionDirect declarations -------
 
-    virtual bool setPosition(int j, double ref) override
+#if YARP_VERSION_COMPARE(>=, 4, 0, 0)
+    yarp::dev::ReturnValue setPosition(int j, double ref) override
     { return raw.setPositionRaw(j, ref); }
-    virtual bool setPositions(const double * refs) override
+    yarp::dev::ReturnValue setPositions(const double * refs) override
     { return raw.setPositionsRaw(refs); }
-    virtual bool setPositions(int n_joint, const int * joints, const double * refs) override
+    yarp::dev::ReturnValue setPositions(int n_joint, const int * joints, const double * refs) override
     { return raw.setPositionsRaw(n_joint, joints, refs); }
+    yarp::dev::ReturnValue getRefPosition(int j, double * ref) override
+    { return raw.getRefPositionRaw(j, ref); }
+    yarp::dev::ReturnValue getRefPositions(double * refs) override
+    { return raw.getRefPositionsRaw(refs); }
+    yarp::dev::ReturnValue getRefPositions(int n_joint, const int * joints, double * refs) override
+    { return raw.getRefPositionsRaw(n_joint, joints, refs); }
+#else
+    bool setPosition(int j, double ref) override
+    { return raw.setPositionRaw(j, ref); }
+    bool setPositions(const double * refs) override
+    { return raw.setPositionsRaw(refs); }
+    bool setPositions(int n_joint, const int * joints, const double * refs) override
+    { return raw.setPositionsRaw(n_joint, joints, refs); }
+    bool getRefPosition(int j, double * ref) override
+    { return raw.getRefPositionRaw(j, ref); }
+    bool getRefPositions(double * refs) override
+    { return raw.getRefPositionsRaw(refs); }
+    bool getRefPositions(int n_joint, const int * joints, double * refs) override
+    { return raw.getRefPositionsRaw(n_joint, joints, refs); }
+#endif
 
 protected:
     DextraRawControlBoard raw;
