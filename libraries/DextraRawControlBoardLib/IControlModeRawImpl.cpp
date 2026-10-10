@@ -43,6 +43,10 @@ bool DextraRawControlBoard::getControlModesRaw(int * modes)
 {
     bool ok = true;
 
+#if YARP_VERSION_COMPARE(>=, 4, 0, 0)
+    modes.resize(Synapse::DATA_POINTS);
+#endif
+
     for (int j = 0; j < Synapse::DATA_POINTS; j++)
     {
 #if YARP_VERSION_COMPARE(>=, 4, 0, 0)
@@ -68,6 +72,10 @@ bool DextraRawControlBoard::getControlModesRaw(int n_joint, const int * joints, 
 #endif
 {
     bool ok = true;
+
+#if YARP_VERSION_COMPARE(>=, 4, 0, 0)
+    modes.resize(joints.size());
+#endif
 
 #if YARP_VERSION_COMPARE(>=, 4, 0, 0)
     for (int i = 0; i < joints.size(); i++)
